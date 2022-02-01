@@ -48,6 +48,12 @@
 - 6.27 的 7.6.8 版本中删除了大部分函数的主要内容，[但脏话数组依然原封不动地保留在原地](https://github.com/tsuzcx/qq_apk/blame/52d8956055474225051d6eb45a6a4c6a515b9b4b/com.tencent.mobileqq/classes.jar/com/tencent/mobileqq/lovelanguage/LoveLanguageConfig.java)，看起来像是故意留下的
 - 此后的 8.2.6 版本中已经没有 lovelanguage 这个文件夹
 
+部分 github 上搜索到的相关分析：
+
+- 已经有很多大佬对这个事情进行了详细的分析，这里我就只记录代码，不深入分析了，具体详细原理可以参考他们的文章
+- [QQ 发送菜刀加符号导致脏话的真实原因分析](https://github.com/pingfangx/BlogX/blob/cca5e71963f63642496ad1c05c55ceee1bf938e9/essay/draft/android/crack/%5B2538%5DQQ%20%E5%8F%91%E9%80%81%E8%8F%9C%E5%88%80%E5%8A%A0%E7%AC%A6%E5%8F%B7%E5%AF%BC%E8%87%B4%E8%84%8F%E8%AF%9D%E7%9A%84%E7%9C%9F%E5%AE%9E%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90.md)
+- [QQ表情-脏话bug漏洞](https://skylinelulu.github.io/2018/09/02/QQEmojiBug/)
+
 ## QQ国际版：com.tencent.mobileqqi
 
 | 版本  | 修改日期  |
